@@ -7,13 +7,13 @@ $PluginCategory = "vSphere"
 
 # Start of Settings 
 # VMs not to report on (regex)
-$IgnoredVMs = "TEMPLATE|BUILD"
+$IgnoredVMs = "Windows7*"
 # VmPathName not to report on
 $IgnoredVMpath = "-backup-"
 # VmFolder not to report on
 $IgnoredVMFolder = "Templates"
 # Report VMs powered off over this many days
-$PoweredOffDays = 7
+$PoweredOffDays = 30
 # End of Settings
 
 # Update settings where there is an override

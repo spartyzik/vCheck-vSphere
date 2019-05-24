@@ -8,7 +8,7 @@ $PluginCategory = "vSphere"
 
 # Start of Settings
 # Clusters with DRS Disabled, do not report on any Clusters that are defined here
-$ClustersDoNotInclude = "VM1_*|VM2_*"
+$ClustersDoNotInclude = "vmc-snyphi"
 # End of Settings
 
 # Update settings where there is an override

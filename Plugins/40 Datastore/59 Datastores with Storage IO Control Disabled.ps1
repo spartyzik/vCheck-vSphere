@@ -7,7 +7,7 @@ $PluginCategory = "vSphere"
 
 # Start of Settings
 # Do not report on any Datastores that are defined here (Storage IO Control disabled Plugin)
-$DatastoreIgnore = "local"
+$DatastoreIgnore = "local|_ssd_|ISOs|Templates"
 # End of Settings
 
 # Update settings where there is an override

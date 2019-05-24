@@ -7,9 +7,9 @@ $PluginCategory = "vSphere"
 
 # Start of Settings 
 # Should CPU hot plug be enabled
-$CPUHotAdd = $true
+$CPUHotAdd = $false
 # Should Memory hot add be enabled
-$MEMHotAdd = $true
+$MEMHotAdd = $false
 # End of Settings
 
 # Update settings where there is an override

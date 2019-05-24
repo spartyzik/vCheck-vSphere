@@ -8,7 +8,7 @@ $PluginCategory = "vSphere"
 
 # Start of Settings 
 # VMs with removable media not to report on
-$IgnoreVMMedia = ""
+$IgnoreVMMedia = "USB controller"
 # End of Settings
 
 # Update settings where there is an override

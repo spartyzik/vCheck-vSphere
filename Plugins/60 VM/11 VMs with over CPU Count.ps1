@@ -6,7 +6,7 @@ $PluginCategory = "vSphere"
 
 # Start of Settings 
 # Define the maximum amount of vCPUs your VMs are allowed
-$vCPU = 2
+$vCPU = 8
 # End of Settings
 
 # Update settings where there is an override
