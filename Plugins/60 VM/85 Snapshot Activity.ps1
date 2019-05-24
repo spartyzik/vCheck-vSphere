@@ -9,7 +9,7 @@ $PluginCategory = "vSphere"
 # Set the number of days to show Snapshots for
 $VMsNewRemovedAge = 5
 # User exception for Snapshot removed
-$snapshotUserException = "s-veeam"
+$snapshotUserException = "VSPHERE.LOCAL\\cv-vsa"
 # End of Settings
 
 # Update settings where there is an override

@@ -7,7 +7,7 @@ $PluginCategory = "vSphere"
 
 # Start of Settings
 # Specify which Datastore(s) to filter from report
-$DatastoreIgnore = "local"
+$DatastoreIgnore = "local|cc_vsan_ssd_dt"
 # End of Settings
 
 # Update settings where there is an override

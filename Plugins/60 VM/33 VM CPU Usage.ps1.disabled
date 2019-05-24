@@ -7,7 +7,7 @@ $PluginCategory = "vSphere"
 
 # Start of Settings 
 # VM Not to go over the following amount of CPU
-$CPUValue = 75
+$CPUValue = 95
 # VM CPU not allowed to go over the previous amount for how many days?
 $CPUDays = 1
 # End of Settings

@@ -9,5 +9,5 @@ $PluginCategory = "vSphere"
 # Start of Settings 
 # End of Settings 
 
-$VMH | Where-Object { ($_.Version -lt 4.1) -and ($_.ConnectionState -eq "Connected" -or $_.ConnectionState -eq "Maintenance") -and ($_.ExtensionData.Summary.Config.Product.Name -match "i")} | Select-Object Name, @{N="TechSuportModeEnabled";E={($_ | Get-AdvancedSetting -Name VMkernel.Boot.techSupportMode).value}} | Where-Object { $_.TechSuportModeEnabled -eq "True" }
-$VMH | Where-Object { $_.Version -ge "4.1.0" } | Where-Object {$_.ConnectionState -eq "Connected" -or $_.ConnectionState -eq "Maintenance"} | Select-Object Name, @{N="TechSuportModeEnabled";E={($_ | Get-VMHostService | Where-Object {$_.key -eq "TSM"}).Running}} | Where-Object { $_.TechSuportModeEnabled -eq "True" }
+$VMH | Where-Object { ($_.Version -lt 4.1) -and ($_.ConnectionState -eq "Connected" -or $_.ConnectionState -eq "Maintenance") -and ($_.ExtensionData.Summary.Config.Product.Name -match "i")} | Select-Object Name, @{N="TechSuportModeEnabled";E={($_ | Get-AdvancedSetting -Name VMkernel.Boot.techSupportMode).value}} | Where-Object { -not $_.TechSuportModeEnabled }
+$VMH | Where-Object { $_.Version -ge "4.1.0" } | Where-Object {$_.ConnectionState -eq "Connected" -or $_.ConnectionState -eq "Maintenance"} | Select-Object Name, @{N="TechSuportModeEnabled";E={($_ | Get-VMHostService | Where-Object {$_.key -eq "TSM"}).Running}} | Where-Object { -not $_.TechSuportModeEnabled }

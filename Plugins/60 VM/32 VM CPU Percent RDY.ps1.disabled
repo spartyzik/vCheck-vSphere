@@ -7,7 +7,7 @@ $PluginCategory = "vSphere"
 
 # Start of Settings 
 # CPU ready on VMs should not exceed
-$PercCPUReady = 10.0
+$PercCPUReady = 5.0
 # End of Settings
 
 # Setup plugin-specific language table

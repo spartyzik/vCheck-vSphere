@@ -8,7 +8,7 @@ $PluginCategory = "vSphere"
 
 # Start of Settings
 # Disabling displaying Google/KB links in order to have wider message column
-$simpleWarning = $true
+$simpleWarning = $false
 # End of Settings
 
 # Update settings where there is an override

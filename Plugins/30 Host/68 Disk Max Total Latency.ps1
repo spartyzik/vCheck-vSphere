@@ -6,7 +6,7 @@ $PluginCategory = "vSphere"
 
 # Start of Settings 
 # Disk Max Total Latency Settings in Milliseconds
-$diskmaxtotallatency = "50"
+$diskmaxtotallatency = "30"
 # Disk Max Total Latency range to inspect (1-24) Hours
 $stattotallatency = "24"
 # End of Settings

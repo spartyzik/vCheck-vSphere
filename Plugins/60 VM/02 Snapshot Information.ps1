@@ -1,6 +1,6 @@
 # Start of Settings 
 # Set the warning threshold for snapshots in days old
-$SnapshotAge = 14
+$SnapshotAge = 30
 # Set snapshot name exception (regex)
 $ExcludeName = "^(ExcludeMe|ExcludeMeToo)$"
 # Set snapshot creator exception (regex)
