@@ -7,16 +7,23 @@ $PluginVersion = 1.3
 $PluginCategory = "vSphere"
 
 # Start of Settings 
+$IgnoreAlarm = "CPU Usage|Snapshot exists|Memory Usage"
 # End of Settings 
+
+# Update settings where there is an override
+$IgnoreAlarm = Get-vCheckSetting $Title "IgnoreAlarm" $IgnoreAlarm
 
 $vmsalarms = @()
 foreach ($VMView in ($FullVM | Where-Object {$_.TriggeredAlarmState})){
    Foreach ($VMsTriggeredAlarm in $VMView.TriggeredAlarmState){
-      New-Object -TypeName PSObject -Property @{
-         Object = $VMView.name
-         Alarm = ($valarms |Where-Object {$_.value -eq ($VMsTriggeredAlarm.alarm.value)}).name
-         Status = $VMsTriggeredAlarm.OverallStatus
-         Time = $VMsTriggeredAlarm.time
+      $alarmName = ($valarms | Where-Object {$_.value -eq ($VMsTriggeredAlarm.alarm.value)}).name
+      if ($IgnoreAlarm -ne "" -and $alarmName -notmatch $IgnoreAlarm) {
+         New-Object -TypeName PSObject -Property @{
+            Object = $VMView.name
+            Alarm = $alarmName
+            Status = $VMsTriggeredAlarm.OverallStatus
+            Time = $VMsTriggeredAlarm.time
+         }
       }
    }
 }
