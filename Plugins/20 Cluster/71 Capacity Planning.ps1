@@ -54,8 +54,8 @@ foreach ($cluv in ($clusviews | Where-Object {$_.Summary.NumHosts -gt 0 } | Sort
 
    # vCPU to pCPU ratio
    if ($cluvmlist){
-      $vCPUpCPUratio = ("1:{0}" -f [math]::round(($cluvmlist|Measure-Object -Sum -Property NumCpu).sum / $cluv.summary.NumCpuThreads,1))
-      $VMVMHostRatio = ("1:{0}" -f [math]::round(($cluvmlist).count/$cluv.Summary.NumHosts,1))
+      $vCPUpCPUratio = ("{0}:1" -f [math]::round(($cluvmlist|Measure-Object -Sum -Property NumCpu).sum / $cluv.summary.NumCpuThreads,1))
+      $VMVMHostRatio = ("{0}:1" -f [math]::round(($cluvmlist).count/$cluv.Summary.NumHosts,1))
    }
    else 
    { 
