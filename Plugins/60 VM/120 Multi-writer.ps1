@@ -10,10 +10,21 @@ $PluginCategory = "vSphere"
 # End of Settings
 
 # Multi-writer parameter
+<# multi-writer doesn't work like this any more.  not sure when it changed. maybe still warn about old settings?
 ForEach ($mwvm in $FullVM){
     $mwvm.Config.ExtraConfig | Where-Object {$_.Key -like "scsi*sharing"} |
     Select-Object @{N="VM";E={$mwvm.Name}},Key,Value
 }
+#>
+
+Foreach ($mwvm in $FullVM) {
+    $mwvm.Config.hardware.device | 
+        Where-Object {$_ -is [VMware.Vim.VirtualDisk] -and $_.Backing.Sharing -ne "sharingNone"} |
+        Select-Object @{N="VM";E={$mwvm.Name}},
+                      @{N="Disk";E={$_.deviceinfo.label}},
+                      @{N="Sharing";E={$_.Backing.Sharing}}
+}
+
 
 # Changelog
 ## 1.0 : Initial Version
