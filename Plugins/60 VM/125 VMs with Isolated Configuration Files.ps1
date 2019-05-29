@@ -19,6 +19,7 @@ Foreach ($CHKVM in $FullVM)
          $vmdkDatastores += ($_.Backing.Filename).Split(']')[0].TrimStart('[')
       }
    }
+   $vmdkDatastores = [array]($vmdkDatastores | Sort-Object -Unique)
     
    If ( -not ($vmdkDatastores.Contains($vmxDatastore)))
    {

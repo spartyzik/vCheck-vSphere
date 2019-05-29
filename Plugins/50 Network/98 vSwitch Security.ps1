@@ -13,12 +13,15 @@ $AllowPromiscuousPolicy = $true
 $ForgedTransmitsPolicy = $true
 # Warn for MacChanges enabled?
 $MacChangesPolicy = $true
+# Ignore portgroups
+$ignorePortGroup = "n-f5-dct2*|waf*|dc-infosec-int-vdi-ha-154|dc-vdi-*"
 # End of Settings
 
 # Update settings where there is an override
 $AllowPromiscuousPolicy = Get-vCheckSetting $Title "AllowPromiscuousPolicy" $AllowPromiscuousPolicy
 $ForgedTransmitsPolicy = Get-vCheckSetting $Title "ForgedTransmitsPolicy" $ForgedTransmitsPolicy
 $MacChangesPolicy = Get-vCheckSetting $Title "MacChangesPolicy" $MacChangesPolicy
+$ignorePortGroup = Get-vCheckSetting $Title "ignorePortGroup" $ignorePortGroup
 
 # Check Power CLI version. Build must be at least 1012425 (5.1 Release 2) to contain Get-VDPortGroup cmdlet
 $VersionOK = $false
@@ -63,7 +66,7 @@ if ($VersionOK) {
         $results += $Output
     }
 
-    Get-VDPortGroup | ForEach-Object {
+    Get-VDPortGroup | Where-Object {($ignorePortGroup -ne "" -and $_.Name -notmatch $ignorePortGroup)} | ForEach-Object {
         $Output = "" | Select-Object Host, Type, vSwitch, Portgroup, AllowPromiscuous, ForgedTransmits, MacChanges
         $Output.Host = "*"
         if ($_.ExtensionData.Config.Uplink -eq $true) {
@@ -82,7 +85,7 @@ if ($VersionOK) {
 
     $VMH | Where-Object { $_.ConnectionState -eq "Connected" } | ForEach-Object {
         $VMHost = $_
-        Get-VirtualPortGroup -VMHost $_ -Standard | ForEach-Object {
+        Get-VirtualPortGroup -VMHost $_ -Standard | Where-Object {($ignorePortGroup -ne "" -and $_.Name -notmatch $ignorePortGroup)} | ForEach-Object {
             $Output = "" | Select-Object Host, Type, vSwitch, Portgroup, AllowPromiscuous, ForgedTransmits, MacChanges
             $Output.Host = $VMHost.Name
             $Output.Type = "vSS Port Group"

@@ -8,11 +8,17 @@ $PluginCategory = "vSphere"
 
 # Start of Settings
 # Disabling displaying Google/KB links in order to have wider message column
+<<<<<<< HEAD
 $simpleWarning = $false
+=======
+$simpleWarning = $true
+$ignoreWarning = "NFSLock|python: waiters|vsanperfsvc|LSOMVsiGetVirstoInstanceStats|VsanSparseIoctl"
+>>>>>>> 2e445d25a96a79ec83d083929d28fb999986e4f1
 # End of Settings
 
 # Update settings where there is an override
 $simpleWarning = Get-vCheckSetting $Title "simpleWarning" $simpleWarning
+$ignoreWarning = Get-vCheckSetting $Title "ignoreWarning" $ignoreWarning
 
 $VMKernelWarnings = @()
 foreach ($VMHost in ($HostsViews)){
@@ -39,7 +45,7 @@ foreach ($VMHost in ($HostsViews)){
          $VMKernelWarnings += $VMKernelWarning | Sort-Object -Property Length -Unique | Select-Object VMHost, Message, KBSearch, Google
       }	
    } else {
-      $Warnings = (Get-Log -VMHost ($VMHost.Name) -Key vmkernel -ErrorAction SilentlyContinue).Entries | Where-Object {$_ -match "warning"}
+      $Warnings = (Get-Log -VMHost ($VMHost.Name) -Key vmkernel -ErrorAction SilentlyContinue).Entries | Where-Object {$_ -match "warning" -and ($ignoreWarning -ne "" -and $_ -notmatch $ignoreWarning)}
       if ($Warnings -ne $null) {
          $VMKernelWarning = @()
          $Warnings | Foreach-Object {
