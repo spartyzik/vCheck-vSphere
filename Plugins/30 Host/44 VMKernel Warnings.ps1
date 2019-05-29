@@ -8,12 +8,8 @@ $PluginCategory = "vSphere"
 
 # Start of Settings
 # Disabling displaying Google/KB links in order to have wider message column
-<<<<<<< HEAD
-$simpleWarning = $false
-=======
 $simpleWarning = $true
 $ignoreWarning = "NFSLock|python: waiters|vsanperfsvc|LSOMVsiGetVirstoInstanceStats|VsanSparseIoctl"
->>>>>>> 2e445d25a96a79ec83d083929d28fb999986e4f1
 # End of Settings
 
 # Update settings where there is an override
