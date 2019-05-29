@@ -7,10 +7,11 @@ $PluginVersion = 1.1
 $PluginCategory = "vSphere"
 
 # Start of Settings 
+$ignoreDS = ".*_log|.*_ssd_data"
 # End of Settings
 
 $DatastoreClustersView | `
-   Where-Object {$_.PodStorageDrsEntry.StorageDrsConfig.PodConfig.Enabled -ne $true -or $_.PodStorageDrsEntry.StorageDrsConfig.PodConfig.DefaultVmBehavior -ne "automated"} | `
+   Where-Object {($ignoreDS -ne "" -and $_.Name -notmatch $ignoreDS) -and $_.PodStorageDrsEntry.StorageDrsConfig.PodConfig.Enabled -ne $true -or $_.PodStorageDrsEntry.StorageDrsConfig.PodConfig.DefaultVmBehavior -ne "automated"} | `
    Select-Object Name, @{N="sDRS Enabled";E={$_.PodStorageDrsEntry.StorageDrsConfig.PodConfig.Enabled}}, @{N="sDRS Automation Level";E={$_.PodStorageDrsEntry.StorageDrsConfig.PodConfig.DefaultVmBehavior}}
 
 # Changelog
