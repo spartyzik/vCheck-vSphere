@@ -7,7 +7,7 @@ $PluginCategory = "vSphere"
 
 # Start of Settings
 # Which power management policy should your hosts use? For Balanced enter "dynamic" (this is the ESXi default policy), for High Performance enter "static", for Low power enter "low".
-$PowerPolicy = "dynamic"
+$PowerPolicy = "static"
 # End of Settings
 
 # Update settings where there is an override
