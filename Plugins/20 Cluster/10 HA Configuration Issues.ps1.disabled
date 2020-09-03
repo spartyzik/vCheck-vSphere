@@ -14,7 +14,7 @@ $CLusterHAShouldBeEnabled = $true
 # HA host monitoring should be set to ...
 $ClusterHAHostMonitoringShouldBeEnabled = $true
 # HA Admission Control should be set to ...
-$ClusterHAAdmissionControlShouldBeEnabled = $true
+$ClusterHAAdmissionControlShouldBeEnabled = $false
 # End of Settings
 
 # Update settings where there is an override
