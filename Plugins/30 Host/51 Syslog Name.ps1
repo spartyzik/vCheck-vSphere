@@ -8,7 +8,7 @@ $PluginCategory = "vSphere"
 
 # Start of Settings 
 # The Syslog server(s) which should be set on your hosts (comma-separated)
-$SyslogServer = "udp://syslogserver"
+$SyslogServer = "udp://loginsight.nam3.msu.edu"
 # End of Settings
 
 # Update settings where there is an override
