@@ -9,7 +9,8 @@ $PluginCategory = "vSphere"
 # Start of Settings 
 # End of Settings 
 
-$VMH | Where-Object {@("Connected","Maintenance") -contains $_.ConnectionState -and 
-              $_.ExtensionData.Summary.Config.Product.Name -match "i" -and 
-              -not $_.ExtensionData.Config.AdminDisabled} | `
-                 Select-Object Name, @{N="LockedMode";E={$_.ExtensionData.Config.AdminDisabled}}
+$VMH | Where-Object {($_.ConnectionState -in @("Connected","Maintenance")) -and 
+                      $_.ExtensionData.Summary.Config.Product.Name -eq "VMware ESXi" -and 
+                      $_.ExtensionData.Config.AdminDisabled -eq $true} | 
+       Select-Object Name, @{N="LockedMode";
+                             E={$_.ExtensionData.Config.AdminDisabled}}
