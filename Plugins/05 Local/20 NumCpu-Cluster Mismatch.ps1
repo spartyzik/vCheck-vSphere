@@ -14,11 +14,11 @@ $PluginCategory = "vSphere"
 
 foreach ($cluster in (Get-Cluster *-sm,*-lg)) {
     Get-VM -Location $cluster | %{
-        $vm = $_
-        if ((($cluster.Name -like "*-sm") -and ($vm.NumCpu -gt 4)) -or (($cluster.Name -like "*-lg") -and ($vm.NumCpu -lt 4))) {
+        $thisvm = $_
+        if ((($cluster.Name -like "*-sm") -and ($thisvm.NumCpu -gt 4)) -or (($cluster.Name -like "*-lg") -and ($thisvm.NumCpu -lt 4))) {
             New-Object PsObject -Property @{
-                "VM" = $vm.Name
-                "NumCpu" = $vm.NumCpu
+                "VM" = $thisvm.Name
+                "NumCpu" = $thisvm.NumCpu
                 "Cluster" = $cluster.Name
             } | Write-Output
         }
