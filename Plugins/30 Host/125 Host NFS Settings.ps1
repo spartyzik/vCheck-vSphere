@@ -15,13 +15,13 @@ $myObj.'Misc.APDTimeout' = "140"
 # NFS Heartbeat Timeout - default of 5 is usually recommended (consult with your storage vendor)
 $myObj.'NFS.HeartbeatTimeout' = "5"
 # NFS Send Buffer Size - default of 264 is usually recommended (consult with your storage vendor)
-$myObj.'NFS.SendBufferSize' = "264"
+$myObj.'NFS.SendBufferSize' = "1024"
 # NFS Receive Buffer Size - default of 256 is usually recommended (consult with your storage vendor)
-$myObj.'NFS.ReceiveBufferSize' = "256"
+$myObj.'NFS.ReceiveBufferSize' = "1024"
 # NFS Max Volumes - ESXi host default is 8, but 256 is often recommended (see VMware KB 2239)
 $myObj.'NFS.MaxVolumes' = "256"
 # Net TCPIP Heap Max - for ESXi 6.x this can be increased to '1536' (see VMware KB 2239)
-$myObj.'Net.TcpipHeapMax' = "512"
+$myObj.'Net.TcpipHeapMax' = "1536"
 # Net TCPIP Heap Size - ESXi host default is 0, but 32 is often recommended (see VMware KB 2239)
 $myObj.'Net.TcpipHeapSize' = "32"
 # NFS Heartbeat Frequency - default of 12 is usually recommended (consult with your storage vendor)
