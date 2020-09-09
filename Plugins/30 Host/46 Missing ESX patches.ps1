@@ -13,7 +13,7 @@ $PluginCategory = "vSphere"
 # https://communities.vmware.com/community/vmtn/automationtools/powercli/updatemanager
 # (Current version 5.1 locks up in PowerShell v3; use "-version 2" when launching.)
 
-If (Get-PSSnapin Vmware.VumAutomation -ErrorAction SilentlyContinue) {
+If (Get-Module Vmware.VumAutomation -ErrorAction SilentlyContinue) {
    foreach($esx in $VMH){
       foreach($baseline in (Get-Compliance -Entity $esx -Detailed | Where-Object {$_.Status -eq "NotCompliant"})){
          $baseline.NotCompliantPatches |
