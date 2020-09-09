@@ -12,7 +12,7 @@ $PluginCategory = "vSphere"
 # Change Log
 ## 1.0 : Initial release
 
-Get-VM -Location| %{ 
+$VM | %{ 
         $vmName = $_.Name
         $snapshots = $_ | Get-Snapshot
         if ($snapshots.Count -gt 0) {
@@ -25,4 +25,4 @@ Get-VM -Location| %{
             }
         }
     } | 
-    Select VM, Count, SizeGB, DaysOld | ft -autosize
+    Select VM, Count, SizeGB, DaysOld
