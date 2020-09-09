@@ -7,9 +7,13 @@ $PluginCategory = "vSphere"
 
 # Start of Settings 
 # VM Not to go over the following amount of CPU
+<<<<<<< Updated upstream:Plugins/60 VM/33 VM CPU Usage.ps1.disabled
 $CPUValue = 95
+=======
+$CPUValue = 99
+>>>>>>> Stashed changes:Plugins/60 VM/33 VM CPU Usage.ps1
 # VM CPU not allowed to go over the previous amount for how many days?
-$CPUDays = 1
+$CPUDays = 3
 # End of Settings
 
 # Update settings where there is an override
