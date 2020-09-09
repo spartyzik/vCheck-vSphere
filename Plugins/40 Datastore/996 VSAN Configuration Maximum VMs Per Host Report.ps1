@@ -7,7 +7,7 @@ $PluginCategory = "vSphere"
 
 # Start of Settings
 # Percentage threshold to warn?
-$vsanWarningThreshold = 50
+$vsanWarningThreshold = 80
 # End of Settings
 
 # Update settings where there is an override
